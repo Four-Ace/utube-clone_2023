@@ -3,10 +3,15 @@ import express from "express";
 // express 라는 이름으로 "express" 패키지를 가져 옴
 // const express = require("express");
 // const app = express();
+
+import morgan from "morgan";
+
+
 const PORT = 4000;
 
 const app = express();
 //서버가 생성됨
+
 
 const logger = (req,res,next) => {
 console.log(`${req.method} ${req.url}`);
@@ -37,7 +42,9 @@ const handleProtected =(req,res) =>{
     return res.send("Welcome to private lounge");
 }
 
-app.use(logger);
+const mlogger = morgan("dev");
+
+app.use(mlogger);
 app.use(privateMiddleware);
 // .use는 global middleware를 사용하게 함.
 
@@ -49,5 +56,4 @@ const handleListening = () => console.log(`Sever listenting on port http://local
 
 app.listen(PORT, handleListening);
 // 이 안의 함수는 서버가 시작할 때 실행되는 함수
-// 서버에게 어떤 port를 listing 할지 정해줘야 함 
-
+// 서버에게 어떤 port를 listing 할지 정해줘야 함
