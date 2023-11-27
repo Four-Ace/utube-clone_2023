@@ -14,8 +14,11 @@ const PORT = 4000;
 const app = express();
 //서버가 생성됨
 const logger = morgan("dev");
-app.use(logger);
 
+console.log(process.cwd());
+app.set("view engine","pug");
+app.set("views",process.cwd() + "/src/views");
+app.use(logger);
 
 app.use("/",globalRouter);
 app.use("/users",userRouter);
