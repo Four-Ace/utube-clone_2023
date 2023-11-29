@@ -15,10 +15,10 @@ const app = express();
 //서버가 생성됨
 const logger = morgan("dev");
 
-console.log(process.cwd());
 app.set("view engine","pug");
 app.set("views",process.cwd() + "/src/views");
 app.use(logger);
+app.use(express.urlencoded({extended:true}));
 
 app.use("/",globalRouter);
 app.use("/users",userRouter);
