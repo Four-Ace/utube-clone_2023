@@ -3,7 +3,28 @@ export const search =(req,res) =>{
 };
 
 export const trending =(req,res) =>{
-    res.render("home",{pageTitle:"Home"});
+    const videos =[{ title:"Video #1",
+    rating : 5,
+    comments : 2,
+    createdAt : "2 min ago",
+    views : 59,
+    id : 1,
+    },
+    { title:"Video #2",
+    rating : 5,
+    comments : 2,
+    createdAt : "2 min ago",
+    views : 59,
+    id : 1,
+    },
+    { title:"Video #3",
+    rating : 5,
+    comments : 2,
+    createdAt : "2 min ago",
+    views : 59,
+    id : 1,
+    }];
+    res.render("home",{pageTitle:"Home",videos});
 };
 
 export const see =(req,res) =>{

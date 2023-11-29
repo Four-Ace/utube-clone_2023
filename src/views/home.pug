@@ -1,6 +1,10 @@
 extends base.pug
+include mixins/video
 
-block content 
-    h1 home! 
-    button test 
-    input(placeholder="write anything!")
+block content
+   h2 Wellcome here you will see the trending videos
+   
+    each argument in videos 
+        +video(argument)
+    else
+        li Sorry. Nothing found
